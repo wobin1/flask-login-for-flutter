@@ -19,11 +19,11 @@ def register():
 
             db.session.add(register)
             db.session.commit()
-            d["status"] = 11
+            d["status"] = "Student is registered succesfully"
             return jsonify(d)
         else:
             # already exist
-            d["status"] = 22
+            d["status"] = "there was an error adding student"
             return jsonify(d)
 
 
@@ -39,9 +39,9 @@ def login():
 
         if login is None:
             # acount not found
-            d["status"] = 22
+            d["status"] = "Login Credential not correct"
             return jsonify(d)
         else:
             # acount found
-            d["status"] = 11
+            d["status"] = "Login Successfull"
             return jsonify(d)

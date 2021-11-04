@@ -23,7 +23,7 @@ def register():
             return jsonify(d)
         else:
             # already exist
-            d["status"] = "student already exist"
+            d["status"] = "stuent already exist"
             return jsonify(d)
 
 

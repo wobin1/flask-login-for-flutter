@@ -8,9 +8,8 @@ views = Blueprint('views', __name__)
 def register():
     d={}
     if request.method =="POST":
-        data = json.loads(request.data,strict=False)
-        mail = data["email"]
-        password = data["password"]
+        mail = request.form["email"]
+        password = request.form["password"]
 
         email = Student.query.filter_by(email=mail).first()
 
@@ -40,7 +39,7 @@ def login():
         if login is None:
             # acount not found
             d["status"] = "Login Credential not correct"
-            return jsonify(d)
+            return jsonify(d) 
         else:
             # acount found
             d["status"] = "Login Successfull"

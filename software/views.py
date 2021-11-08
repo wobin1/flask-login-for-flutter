@@ -30,17 +30,17 @@ def register():
 def login():
     d = {}
     if request.method == "POST":
-        data = json.loads(request.data,strict=False)
-        mail = data["email"]
-        password = data["password"]
+        mail = request.form["email"]
+        password = request.form["password"]
 
         login = Student.query.filter_by(email=mail, password=password).first()
 
         if login is None:
             # acount not found
             d["status"] = "Login Credential not correct"
+            print(d)
             return jsonify(d) 
         else:
             # acount found
-            d["status"] = "Login Successfull"
+            d["status"] = "Login Successfully"
             return jsonify(d)

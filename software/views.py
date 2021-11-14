@@ -18,12 +18,12 @@ def register():
 
             db.session.add(register)
             db.session.commit()
-            d["status"] = "Student is registered succesfully"
-            return jsonify(d)
+           
+            return jsonify(["Register success"])
         else:
             # already exist
-            d["status"] = "stuent already exist"
-            return jsonify(d)
+            
+            return jsonify(["user alredy exist"])
 
 
 @views.route('/login', methods=["GET", "POST"])
@@ -37,10 +37,9 @@ def login():
 
         if login is None:
             # acount not found
-            d["status"] = "Login Credential not correct"
-            print(d)
-            return jsonify(d) 
+            
+            return jsonify(["Wrong Credentials"]) 
         else:
             # acount found
-            d["status"] = "Login Successfully"
-            return jsonify(d)
+            
+            return jsonify([ "success"])
